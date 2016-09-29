@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  div(ng-app="emailApp")
+    div.container.flex(ng-controller="EmailController" ng-keypress="evalKeypress($event)")
+      p Email Autogen
+      form.standard-form.flex(name="theForm")
+        input.standard-input(type="text" ng-model="name" placeholder="Enter your name")
+        label.small-label {{ name }}
+      
+        input.standard-input(type="text" ng-model="year" placeholder="Enter your year")
+        label.small-label {{ year }}
+        
+        input.standard-input(type="text" ng-model="major" placeholder="Enter your major")
+        label.small-label {{ major }}
+        //br
+        div#trigger.standard-button(ng-click="create()") Be Lazy!
+      div.container.flex(style="margin-top: 10px;")
+        p(ng-show="isReady()") My name is {{name}} and I am a {{year}} year {{major}} student.
